@@ -1,6 +1,9 @@
 const path = require('path');
+const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MODULE_NAME = 'BazzoinkLoadingDots';
 
+// https://webpack.js.org/guides/author-libraries/
 // Base html and less requires
 // Using style loader since this is very small
 module.exports = {
@@ -8,10 +11,15 @@ module.exports = {
     devtool: 'source-map',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        library: MODULE_NAME,
+        libraryTarget: 'umd'
     },
     plugins: [
-        new CleanWebpackPlugin(['dist'])
+        new CleanWebpackPlugin(['dist']),
+        new webpack.DefinePlugin({
+            MODULE_NAME: JSON.stringify(MODULE_NAME)
+        })
     ],
     module: {
         rules: [
