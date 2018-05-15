@@ -1,10 +1,10 @@
 {
   "name": "bazzoink-loading-dots",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Just some dots",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/bazzoink/friendly-octo-disco.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bazzoink/friendly-octo-disco.git"
   },
   "main": "dist/bundle.js",
   "module": "src/index.js",
