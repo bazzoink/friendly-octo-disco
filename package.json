@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/bazzoink/friendly-octo-disco.git"
   },
+  "main": "dist/bundle.js",
   "browser": "dist/bundle.js",
   "module": "src/index.js",
   "scripts": {
