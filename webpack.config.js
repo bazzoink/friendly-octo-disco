@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const MODULE_NAME = 'BazzoinkLoadingDots';
 
 // https://webpack.js.org/guides/author-libraries/
@@ -17,6 +18,9 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),
+        new ExtractTextPlugin({
+            filename: '[name].css'
+        }),
         new webpack.DefinePlugin({
             MODULE_NAME: JSON.stringify(MODULE_NAME)
         })
@@ -31,13 +35,16 @@ module.exports = {
             },
             {
                 test: /\.less$/,
-                use: [{
-                    loader: 'style-loader'
-                }, {
-                    loader: 'css-loader'
-                }, {
-                    loader: 'less-loader'
-                }]
+                use: ExtractTextPlugin.extract({
+                    use: [
+                        {
+                            loader: 'css-loader'
+                        },
+                        {
+                            loader: 'less-loader'
+                        }
+                    ]
+                })
             }
         ]
     },
