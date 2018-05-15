@@ -1,6 +1,5 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 // Base html and less requires
 // Using style loader since this is very small
@@ -12,10 +11,7 @@ module.exports = {
         filename: 'bundle.js'
     },
     plugins: [
-        new CleanWebpackPlugin(['dist']),
-        new UglifyJSPlugin({
-           sourceMap: true
-        })
+        new CleanWebpackPlugin(['dist'])
     ],
     module: {
         rules: [
